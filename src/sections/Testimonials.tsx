@@ -2,7 +2,7 @@
 
 import { FC, useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import image1 from "@/assets/images/testimonial-1.jpg";
 import image2 from "@/assets/images/testimonial-2.jpg";
 import image3 from "@/assets/images/testimonial-3.jpg";
@@ -133,11 +133,10 @@ const Testimonials: FC = () => {
               <span></span>
             </div>
             <cite className="mt-4 md:mt-6 not-italic block md:text-lg lg:text-xl">
-  {[currentTestimonial.name, currentTestimonial.role, currentTestimonial.company]
-    .filter(Boolean) // Filters out any empty strings or null values
-    .join(" ")}
-</cite>
-
+              {[currentTestimonial.name, currentTestimonial.role, currentTestimonial.company]
+                .filter(Boolean) // Filters out any empty strings or null values
+                .join(" ")}
+            </cite>
           </blockquote>
         </div>
       </div>
