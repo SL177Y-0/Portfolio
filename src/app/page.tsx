@@ -21,18 +21,26 @@ export default function Home() {
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
-  // Toggle the theme between light and dark
+  // Toggle the theme between light and dark (remove the unused warning)
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Save the theme in localStorage
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
     <>
+      {/* Add a button to toggle the theme, ensuring 'toggleTheme' is used */}
+      <button 
+        onClick={toggleTheme} 
+        className="fixed top-4 right-4 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-2 rounded shadow"
+      >
+        Toggle Theme
+      </button>
+
       {/* Main content */}
-      <Header/>
+      <Header />
       <Hero />
       <Intro />
       <Projects />
