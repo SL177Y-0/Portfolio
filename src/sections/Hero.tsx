@@ -7,7 +7,6 @@ import Button from "@/components/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero: FC = () => {
-  const [hasLoaded, setHasLoaded] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const scrollingDiv = useRef<HTMLDivElement>(null);
 
@@ -27,7 +26,6 @@ const Hero: FC = () => {
   };
 
   useEffect(() => {
-    setHasLoaded(true);
     checkScreenSize();
 
     window.addEventListener("resize", checkScreenSize);
