@@ -1,0 +1,165 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Section padding for consistency */
+.section {
+  padding-top: 6rem; /* py-24 */
+  padding-bottom: 6rem; /* py-24 */
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 8rem; /* md:py-32 */
+    padding-bottom: 8rem; /* md:py-32 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 10rem; /* lg:py-40 */
+    padding-bottom: 10rem; /* lg:py-40 */
+  }
+}
+
+/* Default light theme (for the root) */
+html {
+
+
+  background-color: white;
+  color: black;
+}
+
+/* Dark theme styles */
+html.dark {
+  background-color: #0D001A; /* Dark background */
+  color: white; /* Light text */
+}
+
+/* Theme-specific custom properties (CSS variables) */
+:root {
+  --bg-color-light: white;
+  --text-color-light: black;
+  --bg-color-dark: #0D001A;
+  --text-color-dark: white;
+}
+
+/* Apply custom properties */
+body {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme application */
+html[data-theme='dark'] body {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* Section-specific custom styles */
+.section {
+    padding-top: 6rem; /* py-24 */
+    padding-bottom: 6rem; /* py-24 */
+  }
+  
+  @media (min-width: 768px) {
+    .section {
+      padding-top: 8rem; /* md:py-32 */
+      padding-bottom: 8rem; /* md:py-32 */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section {
+      padding-top: 10rem; /* lg:py-40 */
+      padding-bottom: 10rem; /* lg:py-40 */
+    }
+}
+
+/* Optional: If you want to style the theme toggle button */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #444;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@keyframes fadeInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(25px); /* Start from bottom */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+  }
+}
+
+.fade-in-from-bottom {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInBottom 1.2s ease forwards;
+}
+
+@keyframes fadeInBottom {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.fade-in-text {
+  animation: fadeInFromBottom 0.3s ease-out forwards;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0; /* Start with 0 width */
+  animation: typing 0.3s steps(30) 1s forwards; /* Adjust duration and steps for smoother effect */
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+.word {
+  transform: translateY(100%);
+}
+.fade-in-text {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
