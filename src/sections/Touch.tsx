@@ -38,7 +38,7 @@ const Touch: FC = () => {
           Get in Touch
         </h2>
         <p className="text-center text-black dark:text-black mt-2">
-          We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.
+        We love to hear from you! Fill out the form below and we will get back to you as soon as possible.
         </p>
 
         {/* Contact Form */}
