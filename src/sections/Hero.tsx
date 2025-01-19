@@ -18,7 +18,7 @@ const Hero: FC = () => {
   const portraitWidth = useTransform(scrollYProgress, [0, 1], ["100%", "240%"]);
 
   const checkScreenSize = () => {
-    if (window.innerWidth < 500 && window.innerHeight < 1100) {
+    if (window.innerWidth < 1000 || window.innerHeight < 760) {
       setIsSmallScreen(true);
     } else {
       setIsSmallScreen(false);
@@ -27,9 +27,7 @@ const Hero: FC = () => {
 
   useEffect(() => {
     checkScreenSize();
-
     window.addEventListener("resize", checkScreenSize);
-
     return () => {
       window.removeEventListener("resize", checkScreenSize);
     };
@@ -70,7 +68,7 @@ const Hero: FC = () => {
                 }}
                 className={`fade-in-text`}
                 style={{
-                  animationDelay: `1s`, // Adjust delay for staggered animation
+                  animationDelay: `1s`,
                 }}
                 iconAfter={
                   <svg
@@ -95,7 +93,7 @@ const Hero: FC = () => {
                 variant="text"
                 className={`fade-in-text`}
                 style={{
-                  animationDelay: `1.5s`, // Staggered appearance after the first button
+                  animationDelay: `1.5s`,
                 }}
               >
                 <a
