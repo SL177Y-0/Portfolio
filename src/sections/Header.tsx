@@ -6,12 +6,19 @@ import Button from "@/components/Button";
 const Header1: FC = () => {
   const [theme, setTheme] = useState('light');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   // Set the initial theme based on localStorage or system preference
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Detect screen width changes for responsiveness
+    const handleResize = () => setIsMobileView(window.innerWidth < 500);
+    handleResize(); // Initialize on mount
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Toggle the theme between light and dark
@@ -19,17 +26,15 @@ const Header1: FC = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Save the theme in localStorage
+    localStorage.setItem('theme', newTheme);
   };
 
   // Toggle the dropdown menu
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   // Handle smooth scroll to target section
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Prevent default link behavior
+    e.preventDefault();
     const href = e.currentTarget.getAttribute('href');
     if (!href || !href.startsWith('#')) return;
 
@@ -41,8 +46,7 @@ const Header1: FC = () => {
         inline: 'nearest',
       });
     }
-
-    setMenuOpen(false); // Close the menu after navigation
+    setMenuOpen(false);
   };
 
   return (
@@ -60,30 +64,29 @@ const Header1: FC = () => {
 
           {/* Right Section */}
           <div className="flex items-center gap-4">
-            {/* Contact Me Button - Now moved to left of SVG on mobile */}
-            <a
-              href="https://www.linkedin.com/in/sl177y/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="md:hidden order-1"
-            >
-              <Button variant="primary" className="inline-flex">
-                Connect
-              </Button>
-            </a>
+            {/* Contact Me Button for Larger Screens */}
+            {!isMobileView && (
+              <a
+                href="https://www.linkedin.com/in/sl177y/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:inline-flex"
+              >
+                <Button variant="primary">Connect</Button>
+              </a>
+            )}
 
-            {/* Circle with SVG button */}
-            <div className="relative order-2">
+            {/* Circle with SVG Toggle Button */}
+            <div className="relative">
               <button
                 onClick={toggleMenu}
-                className={`w-11 h-11 border border-stone-400 rounded-full flex items-center justify-center bg-stone-200 dark:bg-stone-700 transform transition-transform ${
+                className={`w-10 h-10 border border-stone-400 rounded-full flex items-center justify-center bg-stone-200 dark:bg-stone-700 transform transition-transform ${
                   menuOpen ? 'rotate-90' : ''
                 }`}
               >
                 <svg
-                  className="w-6 h-6 fill-current text-black dark:text-white"
+                  className="w-5 h-5 fill-current text-black dark:text-white"
                   viewBox="0 0 24 24"
-                  fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <rect x="3" y="15" width="18" height="2" fill="currentColor" />
@@ -140,13 +143,26 @@ const Header1: FC = () => {
                         Contact
                       </a>
                     </li>
+                    {/* Contact Me Button for Mobile View */}
+                    {isMobileView && (
+                      <li>
+                        <a
+                          href="https://www.linkedin.com/in/sl177y/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        >
+                          Connect
+                        </a>
+                      </li>
+                    )}
                   </ul>
                 </div>
               )}
             </div>
 
             {/* Dark Mode Toggle Switch */}
-            <div className="relative flex items-center justify-center md:order-3">
+            <div className="relative flex items-center justify-center">
               <input
                 type="checkbox"
                 checked={theme === 'dark'}
@@ -170,16 +186,6 @@ const Header1: FC = () => {
                 ></span>
               </label>
             </div>
-
-            {/* Contact Me Button - Larger screens */}
-            <a
-              href="https://www.linkedin.com/in/sl177y/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex"
-            >
-              <Button variant="primary">Connect</Button>
-            </a>
           </div>
         </div>
       </div>
