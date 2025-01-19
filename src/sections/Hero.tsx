@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Hero: FC = () => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const scrollingDiv = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -18,10 +18,10 @@ const Hero: FC = () => {
   const portraitWidth = useTransform(scrollYProgress, [0, 1], ["100%", "240%"]);
 
   const checkScreenSize = () => {
-    if (window.innerWidth <  757 || window.innerHeight < 766) {
-      setIsSmallScreen(true);
+    if (window.innerWidth > 768) {
+      setIsDesktop(true);
     } else {
-      setIsSmallScreen(false);
+      setIsDesktop(false);
     }
   };
 
@@ -109,15 +109,7 @@ const Hero: FC = () => {
         </div>
 
         <div className="md:col-span-5 relative">
-          {isSmallScreen ? (
-            <div className="relative mt-6">
-              <Image
-                src={heroImage}
-                alt="My Portrait"
-                className="w-full h-full object-cover z-0"
-              />
-            </div>
-          ) : (
+          {isDesktop ? (
             <motion.div
               className="absolute top-[4rem] md:top-[6rem] md:right-0 w-full h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)]"
               style={{
@@ -130,12 +122,20 @@ const Hero: FC = () => {
                 className="w-full h-full object-cover z-0"
               />
             </motion.div>
+          ) : (
+            <div className="relative mt-6">
+              <Image
+                src={heroImage}
+                alt="My Portrait"
+                className="w-full h-full object-cover z-0"
+              />
+            </div>
           )}
         </div>
       </div>
-      {/* Adjust the height for small screens */}
+      {/* Adjust the height for scroll effect */}
       <div
-        className={isSmallScreen ? "h-[120vh]" : "h-[200vh]"}
+        className={isDesktop ? "h-[200vh]" : "h-[120vh]"}
         ref={scrollingDiv}
       ></div>
     </section>
