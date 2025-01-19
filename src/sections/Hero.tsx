@@ -18,7 +18,7 @@ const Hero: FC = () => {
   const portraitWidth = useTransform(scrollYProgress, [0, 1], ["100%", "240%"]);
 
   const checkScreenSize = () => {
-    if (window.innerWidth < 1000 || window.innerHeight < 760) {
+    if (window.innerWidth <  500 || window.innerHeight < 766) {
       setIsSmallScreen(true);
     } else {
       setIsSmallScreen(false);
