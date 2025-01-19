@@ -133,7 +133,11 @@ const Hero: FC = () => {
           )}
         </div>
       </div>
-      <div className="h-[200vh]" ref={scrollingDiv}></div>
+      {/* Adjust the height for small screens */}
+      <div
+        className={isSmallScreen ? "h-[120vh]" : "h-[200vh]"}
+        ref={scrollingDiv}
+      ></div>
     </section>
   );
 };
