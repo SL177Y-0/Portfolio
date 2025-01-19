@@ -60,8 +60,20 @@ const Header1: FC = () => {
 
           {/* Right Section */}
           <div className="flex items-center gap-4">
+            {/* Contact Me Button - Now moved to left of SVG on mobile */}
+            <a
+              href="https://www.linkedin.com/in/sl177y/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden order-1"
+            >
+              <Button variant="primary" className="inline-flex">
+                Connect
+              </Button>
+            </a>
+
             {/* Circle with SVG button */}
-            <div className="relative">
+            <div className="relative order-2">
               <button
                 onClick={toggleMenu}
                 className={`w-11 h-11 border border-stone-400 rounded-full flex items-center justify-center bg-stone-200 dark:bg-stone-700 transform transition-transform ${
@@ -134,7 +146,7 @@ const Header1: FC = () => {
             </div>
 
             {/* Dark Mode Toggle Switch */}
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex items-center justify-center md:order-3">
               <input
                 type="checkbox"
                 checked={theme === 'dark'}
@@ -159,15 +171,14 @@ const Header1: FC = () => {
               </label>
             </div>
 
-            {/* Contact Me Button - Now a link to LinkedIn */}
+            {/* Contact Me Button - Larger screens */}
             <a
               href="https://www.linkedin.com/in/sl177y/"
               target="_blank"
               rel="noopener noreferrer"
+              className="hidden md:inline-flex"
             >
-              <Button variant="primary" className="hidden md:inline-flex">
-                Connect
-              </Button>
+              <Button variant="primary">Connect</Button>
             </a>
           </div>
         </div>
