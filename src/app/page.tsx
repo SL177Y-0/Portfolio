@@ -21,14 +21,6 @@ export default function Home() {
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 
-  // Toggle the theme between light and dark (logic preserved for other components if needed)
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
-
   return (
     <>
       {/* Main content */}
