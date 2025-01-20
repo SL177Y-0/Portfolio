@@ -24,8 +24,6 @@
 
 /* Default light theme (for the root) */
 html {
-
-
   background-color: white;
   color: black;
 }
@@ -59,22 +57,22 @@ html[data-theme='dark'] body {
 
 /* Section-specific custom styles */
 .section {
-    padding-top: 6rem; /* py-24 */
-    padding-bottom: 6rem; /* py-24 */
+  padding-top: 6rem; /* py-24 */
+  padding-bottom: 6rem; /* py-24 */
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 8rem; /* md:py-32 */
+    padding-bottom: 8rem; /* md:py-32 */
   }
-  
-  @media (min-width: 768px) {
-    .section {
-      padding-top: 8rem; /* md:py-32 */
-      padding-bottom: 8rem; /* md:py-32 */
-    }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 10rem; /* lg:py-40 */
+    padding-bottom: 10rem; /* lg:py-40 */
   }
-  
-  @media (min-width: 1024px) {
-    .section {
-      padding-top: 10rem; /* lg:py-40 */
-      padding-bottom: 10rem; /* lg:py-40 */
-    }
 }
 
 /* Optional: If you want to style the theme toggle button */
@@ -98,6 +96,7 @@ html[data-theme='dark'] body {
 html {
   scroll-behavior: smooth;
 }
+
 @keyframes fadeInFromBottom {
   0% {
     opacity: 0;
@@ -122,11 +121,10 @@ html {
   }
 }
 
-
-
 .fade-in-text {
   animation: fadeInFromBottom 0.3s ease-out forwards;
 }
+
 @keyframes typing {
   from {
     width: 0;
@@ -148,9 +146,11 @@ html {
   opacity: 1;
   transition: opacity 0.3s ease-out;
 }
+
 .word {
   transform: translateY(100%);
 }
+
 .fade-in-text {
   opacity: 0;
   transform: translateY(10px);
@@ -162,4 +162,9 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Added code to remove unwanted button injected by extensions */
+button[jf-ext-button-ct="toggle theme"] {
+  display: none !important;
 }
