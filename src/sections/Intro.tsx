@@ -57,8 +57,8 @@ const Intro: FC = () => {
       className="section min-h-[50vh] mt-[50px] z-10 relative"
     >
       <div className="container">
-        {/* Add more space only on mobile */}
-        <div className={isMobile ? "mt-[500px]" : "mt-[50px]"}>
+        {/* Adjust spacing based on screen size */}
+        <div className={isMobile ? "mt-[50px]" : "mt-[50px]"}>
           <h2 className="text-4xl md:text-6xl lg:text-7xl lg:w-[90%] mt-4">
             {splitTextIntoWords(
               "Shaping The Future Of Web   Design | Develop | Deliver | Turning Digital Challenges Into Elegant Solutions"
