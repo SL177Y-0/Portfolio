@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Header from "@/sections/Header";
 import Hero from "@/sections/Hero";
 import Intro from "@/sections/Intro";
@@ -12,15 +11,6 @@ import Footer from "@/sections/Footer";
 import './globals.css'; // Import global styles
 
 export default function Home() {
-  const [theme, setTheme] = useState('light');
-
-  // Set the initial theme based on localStorage or system preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
-
   return (
     <>
       {/* Main content */}
