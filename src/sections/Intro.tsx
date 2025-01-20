@@ -2,7 +2,7 @@ import { FC, useEffect, useState, useRef } from "react";
 
 const Intro: FC = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [scrollTrigger, setScrollTrigger] = useState(0); // Track scroll trigger for resetting animation
+  const [hasAnimated, setHasAnimated] = useState(false); // Track if the animation has already run
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // Update screen size state on component mount and window resize
@@ -19,28 +19,36 @@ const Intro: FC = () => {
     };
   }, []);
 
-  // Detect scroll events to trigger animation reset
+  // Observe the section and trigger animation only once
   useEffect(() => {
-    const handleScroll = () => {
-      const rect = sectionRef.current?.getBoundingClientRect();
-      if (rect && rect.top >= 0 && rect.bottom <= window.innerHeight) {
-        setScrollTrigger((prev) => prev + 1); // Increment scroll trigger to reset animation
-      }
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true); // Trigger the animation only once
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the section is visible
+    );
 
-    window.addEventListener("scroll", handleScroll);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll); // Clean up event listener
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current); // Clean up the observer
+      }
     };
-  }, []);
+  }, [hasAnimated]);
 
   // Split text into words and apply fade-in animation for each word
   const splitTextIntoWords = (text: string) => {
     return text.split(" ").map((word, index) => (
       <span
-        key={`${word}-${scrollTrigger}-${index}`} // Unique key for each word and scroll event
-        className="fade-in-from-bottom"
+        key={index}
+        className={`fade-in-from-bottom ${
+          hasAnimated ? "animate" : "opacity-0"
+        }`} // Apply animation only after triggering
         style={{
           animationDelay: `${index * 0.5}s`, // Delay each word's animation
         }}
@@ -57,7 +65,6 @@ const Intro: FC = () => {
       className="section min-h-[50vh] mt-[50px] z-10 relative"
     >
       <div className="container">
-        {/* Adjust spacing based on screen size */}
         <div className={isMobile ? "mt-[50px]" : "mt-[50px]"}>
           <h2 className="text-4xl md:text-6xl lg:text-7xl lg:w-[90%] mt-4">
             {splitTextIntoWords(
