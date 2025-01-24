@@ -10,22 +10,27 @@ const projects = [
   {
     name: "KAPDA",
     image: image1,
+    href: "https://kapda0.vercel.app",
   },
   {
     name: "WeGether",
     image: image2,
+    href: "#",
   },
   {
     name: "ChadAI",
     image: image3,
+    href: "#",
   },
   {
     name: "Coming Soon !",
     image: image4,
+    href: "#",
   },
   {
     name: "Coming Soon !",
     image: image5,
+    href: "#",
   },
 ];
 
@@ -35,11 +40,13 @@ const Projects: FC = () => {
       <div className="container">
         <h2 className="text-4xl md:text-7xl lg:text-8xl">ProjeKt</h2>
         <div className="mt-10 md:mt-16 lg:mt-20">
-          {projects.map(({ name, image }) => (
+          {projects.map(({ name, image, href }) => (
             <a
-              href="#"
+              href={href}
               key={name}
               className="group relative border-t last:border-b border-stone-400 border-dotted py-6 md:py-8 lg:py-10 flex items-center justify-between overflow-hidden"
+              target={href !== "#" ? "_blank" : undefined}
+              rel={href !== "#" ? "noopener noreferrer" : undefined}
             >
               {/* Hover animation background */}
               <div className="absolute inset-0 w-full h-full bg-stone-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
