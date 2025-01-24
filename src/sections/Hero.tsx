@@ -15,7 +15,12 @@ const Hero: FC = () => {
     offset: ["start end", "end end"],
   });
 
-  const portraitWidth = useTransform(scrollYProgress, [0, 1], ["100%", "240%"]);
+  // Adjust the range based on whether the device is desktop or mobile
+  const portraitWidth = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isDesktop ? ["100%", "240%"] : ["100%", "180%"]
+  );
 
   const checkScreenSize = () => {
     if (window.innerWidth > 768) {
