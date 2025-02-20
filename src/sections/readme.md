@@ -13,7 +13,7 @@ const projects = [
     href: "https://kapda0.vercel.app",
   },
   {
-    name: "WeGether",
+    name: "Web3_ToDo",
     image: image2,
     href: "#",
   },
@@ -23,12 +23,12 @@ const projects = [
     href: "#",
   },
   {
-    name: "Coming Soon !",
+    name: "WeGether",
     image: image4,
     href: "#",
   },
   {
-    name: "Coming Soon !",
+    name: "Droply",
     image: image5,
     href: "#",
   },
