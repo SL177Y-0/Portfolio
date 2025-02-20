@@ -18,7 +18,7 @@ const faqs = [
   {
     question: "What are your TechStack and How Broad is Your Vision?",
     answer:
-      "My tech stack includes JavaScript (React, Node.js), Python, Java, and various cloud services like AWS. But I am open to exploring new technologies and looking into various domains like Cloud, AI, ML, and Data.",
+      "My tech stack includes JavaScript/TS (React, Node.js, Nest), Python, Java, and various cloud services like AWS. But I am open to exploring new technologies and looking into various domains like Cloud, AI, ML, Data , Blockchain.",
   },
   {
     question:
