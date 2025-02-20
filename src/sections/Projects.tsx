@@ -13,9 +13,9 @@ const projects = [
     href: "https://kapda0.vercel.app",
   },
   {
-    name: "Web3_ToDo",
+    name: "TaskChain",
     image: image2,
-    href: "#",
+    href: "https://decentralized-to-do-application-with-ai-agent-integration.vercel.app/",
   },
   {
     name: "ChadAI",
