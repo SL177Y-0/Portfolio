@@ -37,9 +37,9 @@ const Footer: FC = () => {
         <div className="md:w-1/2">
           {/* Availability */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-3 h-3 rounded-full bg-green-400"></div>
+            <div className="w-3 h-3 rounded-full bg-red-100"></div>
             <span className="text-sm font-medium uppercase tracking-wide">
-              Available To Hire
+              Working At Cluster Protocol
             </span>
           </div>
 
