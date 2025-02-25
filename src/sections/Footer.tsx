@@ -37,7 +37,7 @@ const Footer: FC = () => {
         <div className="md:w-1/2">
           {/* Availability */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-3 h-3 rounded-full bg-red-100"></div>
+            <div className="w-3 h-3 rounded-full bg-purple-700"></div>
             <span className="text-sm font-medium uppercase tracking-wide">
               Working At Cluster Protocol
             </span>
