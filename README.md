@@ -1,6 +1,6 @@
 # SL177Y - 3D Interactive Portfolio
 
-![image](https://github.com/user-attachments/assets/511a737f-71a2-4a0b-8515-5e58a72b0c48)
+
 
 Welcome to the official repository of my 3D Interactive Portfolio, a cutting-edge digital resume designed to showcase my skills in a dynamic and engaging way. This project is more than just a portfolio; it's a testament to my passion for creating immersive web experiences.
 
@@ -11,10 +11,6 @@ Welcome to the official repository of my 3D Interactive Portfolio, a cutting-edg
 -   **Fully Responsive Design**: Meticulously crafted to look and feel great on any device, from mobile phones to desktop monitors.
 -   **Dynamic Content**: A showcase of my work, from complex web applications to innovative blockchain projects.
 -   **Creative UI/UX**: A unique, "Pokemon card" inspired skills section and a sleek, glassmorphic navbar.
-
-## 🚀 Live Demo
-
-[Experience the live portfolio here!](https://your-live-demo-url.com)  *(Replace with your actual URL)*
 
 ## 🛠️ Tech Stack
 
