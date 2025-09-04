@@ -17,7 +17,7 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const interestOptions = ["Web-Design", "Web-Development", "Branding", "TechTalks" , "Others"]
+  const interestOptions = ["Web-Design", "Web-Development", "Branding", "TechTalks" , "AI" , "BlockChain" , "Others"]
   
 
   const handleSubmit = async (e: React.FormEvent) => {
