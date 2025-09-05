@@ -30,12 +30,6 @@ const agdasima = Agdasima({
   variable: "--font-agdasima",
 })
 
-const brodaers = localFont({
-  src: '../public/fonts/brodaers/Brodaers Expanded Regular.ttf',
-  display: 'swap',
-  variable: '--font-brodaers',
-})
-
 export const metadata: Metadata = {
   title: "SL177Y",
   description:
@@ -51,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${workSans.variable} ${openSans.variable} ${syne.variable} ${brodaers.variable} ${agdasima.variable} antialiased`}
+      className={`${workSans.variable} ${openSans.variable} ${syne.variable} ${agdasima.variable} antialiased`}
     >
       <body className="overflow-x-hidden">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
