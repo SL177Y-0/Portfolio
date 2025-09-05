@@ -1,417 +1,175 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-import { cn } from "@/lib/utils"
-import { BodyCanvas } from "@/components/three/body-model"
-import { ProjectModelCanvas } from "@/components/three/models/project-model"
+import { Suspense, useRef, useEffect } from "react"
+import { Canvas, useFrame } from "@react-three/fiber"
+import { PerspectiveCamera, Text, OrbitControls, useGLTF } from "@react-three/drei"
+import type { Group } from "three"
+import { scrollToId } from "@/lib/utils"
 
-interface Project {
-  id: string
-  title: string
-  category: "Web2" | "Web3"
-  githubUrl: string
-  media: string
-  mediaType: "video" | "gif"
-  year: string
-  description: string
-  stats?: {
-    label: string
-    value: string
-  }
-}
-
-const projects: Project[] = [
-  // Web2 Projects
-  {
-    id: "aurora-gold",
-    title: "Aurora Gold",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/Aurora_Gold.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061886/auroragold_yuwwst.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "AI-Investment tracking platform"
-  },
-  {
-    id: "plot-spot-builder",
-    title: "Plot Spot Builder",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/Plot-spot-builder.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061887/plotspot_nwuigg.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Interactive plot building tool"
-  },
-  {
-    id: "zonify",
-    title: "Zonify",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/Zonify.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061889/zonify_mbvt3r.mp4",
-    mediaType: "video",
-    year: "2024",
-    description: "Zone mapping application"
-  },
-  {
-    id: "calcybuilder",
-    title: "CalcyBuilder",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/CalcyBuilder.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061882/calcybuilder_nkuatl.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Dynamic calculator builder"
-  },
-  {
-    id: "ai-recommendation-app",
-    title: "AI Recommendation",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/AI_RECOMMENDATION_APP.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061881/airecommend_ofwub9.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "AI-recommendation app"
-  },
-  {
-    id: "sociohead-platform",
-    title: "SocioHead",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/SocioHead.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061885/sociohead_nd4qcn.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Social media analytics"
-  },
-  {
-    id: "verida-telegram-integration",
-    title: "Verida Integration",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/Verida-Telegram--AutoFetch.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061885/verida_omcumm.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Verida SDK integration"
-  },
-  {
-    id: "kapda-ecommerce",
-    title: "KAPDA",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/KAPDA.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061877/kapda_dvi9qh.mp4",
-    mediaType: "video",
-    year: "2024",
-    description: "E-commerce platform"
-  },
-  {
-    id: "cancer-prediction-ml",
-    title: "Cancer Prediction ML",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/CancerPredictionML.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061893/cancerprediction_gey18l.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Cancer prediction Model"
-  },
-  {
-    id: "movie-review-site",
-    title: "IMDB Clone",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/MovieReviewSite-Spring.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061890/imdb_nzcxz4.mp4",
-    mediaType: "video",
-    year: "2024",
-    description: "Movie rating platform"
-  },
-  {
-    id: "springboot-cart",
-    title: "SpringBoot Cart",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/SpringBoot-Cart.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061891/springcart_eekldq.mp4",
-    mediaType: "video",
-    year: "2024",
-    description: "Shopping cart system"
-  },
-  {
-    id: "barsat-chrome-extension",
-    title: "Barsat Extension",
-    category: "Web2",
-    githubUrl: "https://github.com/SL177Y-0/Barsat-ChrExtension.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061903/barsat_af5eoq.mp4",
-    mediaType: "video",
-    year: "2024",
-    description: "Chrome Fun extension"
-  },
-  // Web3 Projects
-  {
-    id: "web3-signer",
-    title: "Web3 Signer",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/Web3_Signer.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061886/web3signer_adluha.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Secure Web3 Signer"
-  },
-  {
-    id: "ether-snake",
-    title: "EtherSnake",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/EtherSnake.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061880/ethersnake_wcvg9u.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Blockchain-Snake game"
-  },
-  {
-    id: "cosmic-chat",
-    title: "CosmicChat",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/CosmicChat.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061890/cosmicchat_p4o9fo.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Decentralized messaging platform"
-  },
-  {
-    id: "space-id-integration",
-    title: "SPACE ID SDK",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/web3-name-discoverer-tool.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061880/spaceid_fx7i2p.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Web3 DNS integration"
-  },
-  {
-    id: "decentralized-task-management",
-    title: "Task Management dApp",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/ToDo-Web3.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061878/taskmanage_ygds1p.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Decentralized ToDo"
-  },
-  {
-    id: "dao-gov-lite",
-    title: "DAOGovLite",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/DaoGovLite.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061879/daogov_hrnweu.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "DAO governance platform"
-  },
-  {
-    id: "timelock-wallet",
-    title: "TimeLock Wallet",
-    category: "Web3",
-    githubUrl: "https://github.com/SL177Y-0/TimeLockWallet.git",
-    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061879/timelock_gcvuzx.mp4",
-    mediaType: "video",
-    year: "2025",
-    description: "Time-locked wallet"
-  },
-]
-
-const categories = ["Web2", "Web3"] as const
-type Category = (typeof categories)[number]
-
-function BentoCard({ p, span }: { p: Project; span: string }) {
-  const [isHovered, setIsHovered] = useState(false)
-
+// GLB Hero Model
+function HeroModel() {
+  const { scene } = useGLTF('/models/rishihero.glb')
+  const meshRef = useRef<Group>(null)
+  
+  useFrame((state) => {
+    if (!meshRef.current) return
+    const t = state.clock.getElapsedTime()
+    // Gentle floating animation
+    meshRef.current.position.y = Math.sin(t * 0.8) * 0.1
+  })
+  
   return (
-    <a
-      href={p.githubUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        "group relative rounded-2xl overflow-hidden border border-white/20 backdrop-blur-sm hover:border-white/30 transition-all duration-300 hover:scale-[1.02]",
-        span,
-      )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Media Background */}
-      <div className="absolute inset-0">
-        {p.mediaType === "video" ? (
-          <video
-            className="w-full h-full object-cover"
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            ref={(video) => {
-              if (video) {
-                if (isHovered) {
-                  video.play()
-                } else {
-                  video.pause()
-                  video.currentTime = 0
-                }
-              }
-            }}
-          >
-            <source src={p.media} type="video/mp4" />
-          </video>
-        ) : (
-          // This block can now be safely removed or left as a fallback,
-          // but since we are converting all GIFs, it won't be used.
-          // For cleanliness, we can remove it.
-          <></>
-        )}
-        
-        {/* Dark overlay when not hovered */}
-        <div 
-          className={cn(
-            "absolute inset-0 bg-black transition-opacity duration-300",
-            isHovered ? "opacity-0" : "opacity-60"
-          )}
-        />
-      </div>
-      
-      {/* Content - visible when not hovered */}
-      <div 
-        className={cn(
-          "relative p-6 h-full flex flex-col justify-between text-white transition-opacity duration-300",
-          isHovered ? "opacity-0" : "opacity-100"
-        )}
-      >
-        {/* Header */}
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <span className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm rounded-full mb-3">
-              {p.category}
-            </span>
-            <h3 className="font-content font-bold text-xl lg:text-2xl leading-tight mb-2">
-              {p.title}
-            </h3>
-          </div>
-          <span className="text-xs font-medium opacity-80">
-            {p.year}
-          </span>
-        </div>
-        
-        {/* Description */}
-        <p className="font-content text-sm opacity-90 leading-relaxed mb-4 flex-1">
-          {p.description}
-        </p>
-        
-        {/* Stats Footer */}
-        {p.stats && (
-          <div className="mt-auto">
-            <div className="flex items-center justify-between bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2">
-              <span className="text-xs font-medium opacity-80">
-                {p.stats.label}
-              </span>
-              <span className="text-lg font-bold">
-                {p.stats.value}
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
-    </a>
+    <group ref={meshRef}>
+      <primitive 
+        object={scene} 
+        scale={[2, 2, 2]} 
+        position={[0, -2.0, 0]}
+        rotation={[0, 0, 0]}
+      />
+    </group>
   )
 }
 
-export default function ProjectsSection() {
-  const [activeCategory, setActiveCategory] = useState<Category>("Web2")
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+// Preload the GLB model
+useGLTF.preload('/models/rishihero.glb')
 
-  const filtered = projects.filter((p) => p.category === activeCategory)
+export default function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const handleProjectViewClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    scrollToId("projects")
+  }
 
+  // Enhanced video loop handling
   useEffect(() => {
-    const ob = new IntersectionObserver(([e]) => e.isIntersecting && setIsVisible(true), { threshold: 0.2 })
-    if (sectionRef.current) ob.observe(sectionRef.current)
-    return () => ob.disconnect()
+    const video = videoRef.current
+    if (!video) return
+
+    const handleVideoLoop = () => {
+      // Smooth restart by briefly reducing opacity during transition
+      video.style.opacity = "0.95"
+      setTimeout(() => {
+        video.style.opacity = "1"
+      }, 100)
+    }
+
+    const onDataLoaded = () => {
+      console.log("Video data loaded successfully.")
+      // Set the playback speed to 75% of the original
+      video.playbackRate = 0.75
+    }
+
+    const onError = (e: Event) => {
+      console.error("Video Error:", e)
+      if (video.error) {
+        console.error("Video error code:", video.error.code)
+        console.error("Video error message:", video.error.message)
+      }
+    }
+
+    const onStalled = () => {
+      console.warn("Video stalled: The browser is trying to get media data, but data is not available.")
+    }
+
+    const onSuspend = () => {
+      console.warn("Video suspend: The browser is intentionally not getting media data.")
+    }
+
+    video.addEventListener("loadeddata", onDataLoaded)
+    video.addEventListener("error", onError)
+    video.addEventListener("stalled", onStalled)
+    video.addEventListener("suspend", onSuspend)
+    video.addEventListener("ended", handleVideoLoop)
+    video.addEventListener("seeked", handleVideoLoop)
+
+    return () => {
+      video.removeEventListener("loadeddata", onDataLoaded)
+      video.removeEventListener("error", onError)
+      video.removeEventListener("stalled", onStalled)
+      video.removeEventListener("suspend", onSuspend)
+      video.removeEventListener("ended", handleVideoLoop)
+      video.removeEventListener("seeked", handleVideoLoop)
+    }
   }, [])
 
-  const spans = [
-    "lg:col-span-2 lg:row-span-2", // Large square card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-2", // Large square card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-2", // Large square card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-3 lg:row-span-2", // Extra large featured card
-    "lg:col-span-3 lg:row-span-1", // Extra wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-2 lg:row-span-1", // Wide card
-    "lg:col-span-3 lg:row-span-1", // Extra wide card
-    "lg:col-span-3 lg:row-span-1", // Extra wide card
-  ]
-
   return (
-    <section ref={sectionRef} className="section-padding relative project-bg">
-      <div className="container mx-auto">
-        <div className={cn("text-center mb-10 transition-all duration-700", isVisible ? "opacity-100" : "opacity-0")}>
-       
-        </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Enhanced Video Background with Smooth Looping */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          poster="https://res.cloudinary.com/dyfbk6hzo/image/upload/v1757068060/Screenshot_2025-09-05_155700_adkrbq.png"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-200 ease-in-out"
+        >
+          <source
+            src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,q_auto/v1757067440/hero008_4_rzkq0v.mp4"
+            type="video/mp4"
+          />
+        </video>
+        
+        {/* Subtle overlay animation to further mask any loop transitions */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/10 animate-pulse-slow"></div>
+      </div>
 
-        {/* two-column layout */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* 3D project model on the left */}
-          <div className="lg:col-span-4 lg:mt-120 hidden lg:block">
-            <ProjectModelCanvas />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 relative z-20 pt-32 sm:pt-40 lg:pt-48 xl:pt-0">
+        {/* Mobile: Vertical stack, Desktop: 2-column grid */}
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-screen lg:min-h-0">
+          
+          {/* 3D Model - First on mobile, second on desktop */}
+          <div className="order-1 lg:order-2 w-full h-64 sm:h-80 md:h-96 lg:h-[500px] transition-all duration-300">
+            <Canvas style={{ background: 'transparent' }} gl={{ alpha: true, antialias: true }}>
+              <PerspectiveCamera makeDefault position={[0, 2, 5]} />
+              <ambientLight intensity={0.8} />
+              <pointLight position={[10, 10, 10]} intensity={1.2} />
+              <spotLight position={[0, 8, 2]} angle={0.35} penumbra={1} intensity={0.9} color="#22c55e" />
+              <Suspense fallback={null}>
+                <HeroModel />
+              </Suspense>
+              {/* OrbitControls for 360° rotation with auto-rotate */}
+              <OrbitControls
+                enablePan={false}
+                enableZoom={false}
+                enableDamping
+                dampingFactor={0.08}
+                autoRotate
+                autoRotateSpeed={0.6}
+                minPolarAngle={0}
+                maxPolarAngle={Math.PI}
+              />
+            </Canvas>
           </div>
 
-          <div className="lg:col-span-8">
-            {/* Liquid Glass Filter Navigation */}
-            <div className="flex justify-center mb-8">
-              <div 
-                className={cn(
-                  "backdrop-blur-xl border border-white/30 rounded-2xl px-4 py-3 shadow-2xl flex gap-2",
-                  "before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-br before:from-white/40 before:via-white/20 before:to-transparent before:pointer-events-none",
-                  "after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-t after:from-black/5 after:to-transparent after:pointer-events-none",
-                  "relative"
-                )}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(20px) saturate(180%)',
-                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                {categories.map((c) => (
-                  <button
-                    key={c}
-                    onClick={() => setActiveCategory(c)}
-                    className={cn(
-                      "relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 z-10",
-                      activeCategory === c
-                        ? "bg-white/30 text-gray-700 shadow-lg backdrop-blur-sm"
-                        : "text-gray-600 hover:text-gray-800 hover:bg-white/20",
-                    )}
-                    style={{ fontFamily: 'var(--font-agdasima)' }}
-                  >
-                    {activeCategory === c && (
-                      <div className="absolute inset-0 rounded-xl ring-1 ring-white/40 bg-gradient-to-br from-white/50 to-white/20" />
-                    )}
-                    <span className="relative">{c}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 auto-rows-[180px] gap-4">
-              {filtered.map((p, i) => (
-                <BentoCard key={p.id} p={p} span={spans[i % spans.length]} />
-              ))}
+          {/* Text and Button - Second on mobile, first on desktop */}
+          <div className="order-2 lg:order-1 text-center lg:text-left space-y-6 lg:space-y-8 pt-8 sm:pt-12 lg:pt-16 xl:pt-20">
+            <h1 
+              className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl leading-tight text-black" 
+              style={{ 
+                fontFamily: 'var(--font-runker)', 
+                lineHeight: '0.8',
+                letterSpacing: '0.01rem'
+              }}
+            >
+              Crafting Web<br />
+              Experiences @ One<br />
+              Pixel Per MilliSecond
+            </h1>
+            
+            <div className="flex justify-center lg:justify-start items-center gap-2 pt-2">
+              <a href="#projects" onClick={handleProjectViewClick} className="btn bg-black scale-75 sm:scale-90 lg:scale-100">
+                <span className="btn__content bg-[#FFDE21] text-black font-bold text-xs sm:text-sm lg:text-base" style={{ fontFamily: 'var(--font-syne)' }}>
+                  VIEW MY PROJECTS
+                </span>
+              </a>
             </div>
           </div>
         </div>
       </div>
+
     </section>
   )
 }
