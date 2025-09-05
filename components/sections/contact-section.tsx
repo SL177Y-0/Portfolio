@@ -17,7 +17,7 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const interestOptions = ["Web-Design", "Web-Development", "Branding", "TechTalks" , "AI" , "BlockChain" , "Others"]
+  const interestOptions = ["Web-Design", "Web-Development", "Branding","BlockChain","AI", "TechTalks" , "Others"]
   
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -212,11 +212,11 @@ export default function ContactSection() {
     <section ref={sectionRef} id="contact" className="section-padding relative overflow-hidden contact-bg">
       <div className="container mx-auto relative z-10">
         {/* Main content */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 min-h-[10vh]">
+        <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 min-h-[10vh]">
           {/* Left side - 3D Model */}
           <div
             className={cn(
-              "flex-shrink-0 transition-all duration-1000",
+              "flex-shrink-0 transition-all duration-1000 hidden lg:block",
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8",
             )}
           >
