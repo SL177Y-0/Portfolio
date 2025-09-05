@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
-import { BodyCanvas } from "@/components/three/body-model"
 import { ExperienceModelCanvas } from "@/components/three/models/experience-model"
 import Image from "next/image"
 
@@ -177,7 +176,7 @@ export default function ExperienceSection() {
           </div>
 
           {/* 3D experience model on the right */}
-          <div className="lg:col-span-4 order-first lg:order-none h-64 sm:h-80 lg:h-auto">
+          <div className="lg:col-span-4 order-first lg:order-none h-64 sm:h-80 lg:h-auto hidden lg:block">
             <ExperienceModelCanvas />
           </div>
         </div>
