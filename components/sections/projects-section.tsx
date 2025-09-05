@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { BodyCanvas } from "@/components/three/body-model"
 import { ProjectModelCanvas } from "@/components/three/models/project-model"
+import { Lazy3DWrapper } from "@/components/lazy-3d-wrapper"
 
 interface Project {
   id: string
@@ -363,7 +364,13 @@ export default function ProjectsSection() {
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* 3D project model on the left */}
           <div className="lg:col-span-4 lg:mt-120 hidden lg:block">
-            <ProjectModelCanvas />
+            <Lazy3DWrapper
+              threshold={0.2}
+              rootMargin="200px"
+              className="h-[20rem] sm:h-[28rem] lg:h-[36rem]"
+            >
+              <ProjectModelCanvas />
+            </Lazy3DWrapper>
           </div>
 
           <div className="lg:col-span-8">

@@ -6,7 +6,6 @@ import { PerspectiveCamera, Text, OrbitControls, useGLTF } from "@react-three/dr
 import type { Group } from "three"
 import { scrollToId } from "@/lib/utils"
 
-// GLB Hero Model
 function HeroModel() {
   const { scene } = useGLTF('/models/rishihero.glb')
   const meshRef = useRef<Group>(null)
@@ -14,7 +13,6 @@ function HeroModel() {
   useFrame((state) => {
     if (!meshRef.current) return
     const t = state.clock.getElapsedTime()
-    // Gentle floating animation
     meshRef.current.position.y = Math.sin(t * 0.8) * 0.1
   })
   
@@ -24,13 +22,11 @@ function HeroModel() {
         object={scene} 
         scale={[2, 2, 2]} 
         position={[0, -2.0, 0]}
-        rotation={[0, 0, 0]}
       />
     </group>
   )
 }
 
-// Preload the GLB model
 useGLTF.preload('/models/rishihero.glb')
 
 export default function HeroSection() {

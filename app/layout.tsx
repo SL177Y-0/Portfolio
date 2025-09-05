@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Work_Sans, Open_Sans, Syne, Agdasima } from "next/font/google"
-import localFont from 'next/font/local'
 import "./globals.css"
 import SmoothScrollProvider from "@/components/smooth-scroll-provider"
 

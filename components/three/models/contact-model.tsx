@@ -5,7 +5,6 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { PerspectiveCamera, OrbitControls, useGLTF } from "@react-three/drei"
 import type { Group } from "three"
 
-// GLB Contact Model
 function ContactModel() {
   const { scene } = useGLTF('/models/contact.glb')
   const meshRef = useRef<Group>(null)
@@ -13,11 +12,7 @@ function ContactModel() {
   useFrame((state) => {
     if (!meshRef.current) return
     const t = state.clock.getElapsedTime()
-    
-    // Smoother floating animation with eased curves
     meshRef.current.position.y = Math.sin(t * 0.6) * 0.15 + Math.sin(t * 0.3) * 0.05
-    
-    // Gentle rotation on Y-axis
     meshRef.current.rotation.y = Math.sin(t * 0.4) * 0.1
   })
   
@@ -27,14 +22,13 @@ function ContactModel() {
         object={scene} 
         scale={[3.0, 3.0, 3.0]} 
         position={[0, -2.9, 0]}
-        rotation={[0, 0, 0]}
       />
     </group>
   )
 }
 
-// Preload the GLB model
-useGLTF.preload('/models/contact.glb')
+const preloadModel = () => useGLTF.preload('/models/contact.glb')
+setTimeout(preloadModel, 100)
 
 export function ContactModelCanvas() {
   return (

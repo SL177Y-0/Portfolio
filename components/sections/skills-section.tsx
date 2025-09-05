@@ -80,6 +80,7 @@ function SkillCard({ skill, index, hoveredIndex }: {
         src={skill.image}
         alt={skill.name}
         fill
+        sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 112px, 128px"
         className={cn(
           "transition-all duration-200 ease-out",
           !isHovered ? "object-cover object-top" : "object-contain object-center",

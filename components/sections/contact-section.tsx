@@ -5,6 +5,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { ContactModelCanvas } from "@/components/three/models/contact-model"
+import { Lazy3DWrapper } from "@/components/lazy-3d-wrapper"
 
 // Contact form component matching the screenshot design
 function ContactForm() {
@@ -220,7 +221,13 @@ export default function ContactSection() {
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8",
             )}
           >
-            <ContactModelCanvas />
+            <Lazy3DWrapper
+              threshold={0.2}
+              rootMargin="100px"
+              className="h-[16rem] sm:h-[24rem] lg:h-[32rem]"
+            >
+              <ContactModelCanvas />
+            </Lazy3DWrapper>
           </div>
 
           {/* Right side - Contact form */}

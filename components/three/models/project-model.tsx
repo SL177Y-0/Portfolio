@@ -5,7 +5,6 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { PerspectiveCamera, OrbitControls, useGLTF } from "@react-three/drei"
 import type { Group } from "three"
 
-// GLB Project Model
 function ProjectModel() {
   const { scene } = useGLTF('/models/project.glb')
   const meshRef = useRef<Group>(null)
@@ -13,11 +12,7 @@ function ProjectModel() {
   useFrame((state) => {
     if (!meshRef.current) return
     const t = state.clock.getElapsedTime()
-    
-    // Smoother floating animation with varying frequencies
     meshRef.current.position.y = Math.sin(t * 0.45) * 0.18 + Math.sin(t * 0.2) * 0.08
-    
-    // Gentle multi-axis rotation for more dynamic movement
     meshRef.current.rotation.y = Math.sin(t * 0.35) * 0.08
     meshRef.current.rotation.x = Math.sin(t * 0.25) * 0.04
   })
@@ -28,14 +23,13 @@ function ProjectModel() {
         object={scene} 
         scale={[2.8, 2.8, 2.8]} 
         position={[0, -2, 0]}
-        rotation={[0, 0, 0]}
       />
     </group>
   )
 }
 
-// Preload the GLB model
-useGLTF.preload('/models/project.glb')
+const preloadModel = () => useGLTF.preload('/models/project.glb')
+setTimeout(preloadModel, 300)
 
 export function ProjectModelCanvas() {
   return (

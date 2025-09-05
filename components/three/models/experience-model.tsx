@@ -5,7 +5,6 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { PerspectiveCamera, OrbitControls, useGLTF } from "@react-three/drei"
 import type { Group } from "three"
 
-// GLB Experience Model
 function ExperienceModel() {
   const { scene } = useGLTF('/models/experience.glb')
   const meshRef = useRef<Group>(null)
@@ -13,11 +12,7 @@ function ExperienceModel() {
   useFrame((state) => {
     if (!meshRef.current) return
     const t = state.clock.getElapsedTime()
-    
-    // Smoother floating animation with multiple wave frequencies
     meshRef.current.position.y = Math.sin(t * 0.5) * 0.12 + Math.sin(t * 0.25) * 0.06
-    
-    // Gentle swaying rotation
     meshRef.current.rotation.x = Math.sin(t * 0.3) * 0.05
     meshRef.current.rotation.z = Math.sin(t * 0.4) * 0.03
   })
@@ -28,14 +23,13 @@ function ExperienceModel() {
         object={scene} 
         scale={[2.4, 2.4, 2.4]} 
         position={[0, -1.8, 0]}
-        rotation={[0, 0, 0]}
       />
     </group>
   )
 }
 
-// Preload the GLB model
-useGLTF.preload('/models/experience.glb')
+const preloadModel = () => useGLTF.preload('/models/experience.glb')
+setTimeout(preloadModel, 200)
 
 export function ExperienceModelCanvas() {
   return (

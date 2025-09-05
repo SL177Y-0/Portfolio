@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 import { ExperienceModelCanvas } from "@/components/three/models/experience-model"
+import { Lazy3DWrapper } from "@/components/lazy-3d-wrapper"
 import Image from "next/image"
 
 type Card = { title: string; hint: string; link?: string }
@@ -177,7 +178,13 @@ export default function ExperienceSection() {
 
           {/* 3D experience model on the right */}
           <div className="lg:col-span-4 order-first lg:order-none h-64 sm:h-80 lg:h-auto hidden lg:block">
-            <ExperienceModelCanvas />
+            <Lazy3DWrapper
+              threshold={0.2}
+              rootMargin="150px"
+              className="h-80 sm:h-96 lg:h-[28rem]"
+            >
+              <ExperienceModelCanvas />
+            </Lazy3DWrapper>
           </div>
         </div>
       </div>

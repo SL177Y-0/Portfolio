@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true npm run build",
+    "dev:turbo": "next dev --turbo"
   },
   "dependencies": {
     "@react-three/drei": "latest",
@@ -18,10 +20,12 @@
     "next": "15.2.4",
     "react": "^19",
     "react-dom": "^19",
+    "react-intersection-observer": "^9.13.1",
     "tailwind-merge": "^3.3.1",
     "three": "latest"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.2.4",
     "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^22",
     "@types/react": "^19",
