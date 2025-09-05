@@ -52,7 +52,7 @@ export default function MarqueePartition({ text, direction = "left", speed = "no
             return (
               <div
                 key={i}
-                className="font-black text-3xl lg:text-4xl uppercase tracking-widest flex-shrink-0"
+                className="font-black text-4xl uppercase tracking-widest flex-shrink-0"
                 style={{
                   fontFamily: "Impact, Haettenschweiler, 'Arial Black', sans-serif",
                   marginRight: "2rem", // Consistent spacing
