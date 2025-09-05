@@ -33,22 +33,6 @@ function HeroModel() {
 // Preload the GLB model
 useGLTF.preload('/models/rishihero.glb')
 
-function Logo3D() {
-  const ref = useRef<Group>(null)
-  useFrame((s) => {
-    if (ref.current) {
-      ref.current.rotation.y = Math.sin(s.clock.elapsedTime * 0.5) * 0.1
-      ref.current.position.y = Math.sin(s.clock.elapsedTime * 0.8) * 0.05
-    }
-  })
-  return (
-    <group ref={ref}>
-     
-      {/* removed backing box to eliminate black rectangle behind text */}
-    </group>
-  )
-}
-
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const handleProjectViewClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -63,46 +47,48 @@ export default function HeroSection() {
 
     const handleVideoLoop = () => {
       // Smooth restart by briefly reducing opacity during transition
-      video.style.opacity = '0.95'
+      video.style.opacity = "0.95"
       setTimeout(() => {
-        video.style.opacity = '1'
+        video.style.opacity = "1"
       }, 100)
     }
 
-    // Preload and setup smooth playback
-    video.addEventListener('loadeddata', () => {
-      console.log('Video data loaded successfully.');
-      video.style.opacity = '1'
+    const onDataLoaded = () => {
+      console.log("Video data loaded successfully.")
       // Set the playback speed to 75% of the original
       video.playbackRate = 0.75
-    });
+    }
 
-    video.addEventListener('error', (e) => {
-      console.error('Video Error:', e);
-      // You can inspect the error object in the console for more details
+    const onError = (e: Event) => {
+      console.error("Video Error:", e)
       if (video.error) {
-        console.error('Video error code:', video.error.code);
-        console.error('Video error message:', video.error.message);
+        console.error("Video error code:", video.error.code)
+        console.error("Video error message:", video.error.message)
       }
-    });
+    }
 
-    video.addEventListener('stalled', () => {
-      console.warn('Video stalled: The browser is trying to get media data, but data is not available.');
-    });
+    const onStalled = () => {
+      console.warn("Video stalled: The browser is trying to get media data, but data is not available.")
+    }
 
-    video.addEventListener('suspend', () => {
-      console.warn('Video suspend: The browser is intentionally not getting media data.');
-    });
+    const onSuspend = () => {
+      console.warn("Video suspend: The browser is intentionally not getting media data.")
+    }
 
-    video.addEventListener('ended', handleVideoLoop)
-    video.addEventListener('seeked', handleVideoLoop)
+    video.addEventListener("loadeddata", onDataLoaded)
+    video.addEventListener("error", onError)
+    video.addEventListener("stalled", onStalled)
+    video.addEventListener("suspend", onSuspend)
+    video.addEventListener("ended", handleVideoLoop)
+    video.addEventListener("seeked", handleVideoLoop)
 
     return () => {
-      video.removeEventListener('ended', handleVideoLoop)
-      video.removeEventListener('seeked', handleVideoLoop)
-      video.removeEventListener('error', () => {});
-      video.removeEventListener('stalled', () => {});
-      video.removeEventListener('suspend', () => {});
+      video.removeEventListener("loadeddata", onDataLoaded)
+      video.removeEventListener("error", onError)
+      video.removeEventListener("stalled", onStalled)
+      video.removeEventListener("suspend", onSuspend)
+      video.removeEventListener("ended", handleVideoLoop)
+      video.removeEventListener("seeked", handleVideoLoop)
     }
   }, [])
 
@@ -112,16 +98,18 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
-          poster="/Bg/gradbg.jpg"
+          poster="https://res.cloudinary.com/dyfbk6hzo/image/upload/v1757068060/Screenshot_2025-09-05_155700_adkrbq.png"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-200 ease-in-out"
-          style={{ opacity: 0 }}
         >
-          <source src="/Bg/hero008.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,q_auto/v1757067440/hero008_4_rzkq0v.mp4"
+            type="video/mp4"
+          />
         </video>
         
         {/* Subtle overlay animation to further mask any loop transitions */}
@@ -158,31 +146,6 @@ export default function HeroSection() {
 
           {/* Text and Button - Second on mobile, first on desktop */}
           <div className="order-2 lg:order-1 text-center lg:text-left space-y-6 lg:space-y-8 pt-8 sm:pt-12 lg:pt-16 xl:pt-20">
-            {/* 
-            ====== FONT SWITCHING GUIDE ======
-            
-            To change the hero font, replace 'var(--font-sledge)' in fontFamily below with any of these options:
-            
-            🎨 AVAILABLE FONTS:
-            • var(--font-boughy)     → Boughy (original choice, M/W issues)
-            • var(--font-sledge)     → Sledge (current, good for headers)
-            • var(--font-brans)      → Brans (medium weight, clean)
-            • var(--font-brodaers)   → Brodaers (expanded/wide, great for hero)
-            • var(--font-leon-slab)  → Leon Slab (serif, classic)
-            • var(--font-runker)     → Runker (bold italic, dramatic)
-            • var(--font-spot)       → Spot (normal, clean)
-            • var(--font-spot-italic)→ Spot Italic (stylish)
-            • var(--font-wosker)     → Wosker (demo font)
-            
-            💡 RECOMMENDED FOR HERO:
-            • Brodaers (expanded/wide fonts work great for hero text)
-            • Sledge (current choice, good balance)
-            • Leon Slab (if you want serif elegance)
-            
-            📝 HOW TO SWITCH:
-            Just change: fontFamily: 'var(--font-sledge)'
-            To:         fontFamily: 'var(--font-brodaers)'
-            */}
             <h1 
               className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl leading-tight text-black" 
               style={{ 
@@ -207,17 +170,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Removed top-right social bubbles; keep logo */}
-      <div className="absolute top-8 left-8 w-32 h-20 z-20">
-        <Canvas style={{ background: 'transparent' }} gl={{ alpha: true, antialias: true }}>
-          <PerspectiveCamera makeDefault position={[0, 0, 3]} />
-          <ambientLight intensity={0.8} />
-          <pointLight position={[5, 5, 5]} intensity={1.0} />
-          <Suspense fallback={null}>
-            <Logo3D />
-          </Suspense>
-        </Canvas>
-      </div>
     </section>
   )
 }
