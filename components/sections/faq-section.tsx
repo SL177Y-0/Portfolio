@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { twMerge } from "tailwind-merge"
-import { BodyCanvas } from "@/components/three/body-model"
 
 const faqs = [
   {
@@ -63,8 +62,8 @@ export default function FAQSection() {
                         >
                             <div
                                 className={twMerge(
-                                    "absolute h-0 w-full bottom-0 left-0 bg-stone-300 -z-10 group-hover:h-full transition-all duration-700",
-                                    faqIndex === selectedIndex && "h-full"
+                                    "absolute h-full w-0 top-0 left-0 bg-stone-300 -z-10 group-hover:w-full transition-all duration-700",
+                                    faqIndex === selectedIndex && "w-full"
                                 )}
                             ></div>
                             <div
@@ -72,11 +71,14 @@ export default function FAQSection() {
                                     "flex items-center gap-2 md:gap-3 lg:gap-4 transition-all duration-700 group-hover:lg:px-8"
                                 )}
                             >
-                                <div className="font-content font-bold text-2xl md:text-3xl lg:text-4xl flex-1 text-white group-hover:text-black transition-colors duration-700">{question}</div>
+                                <div className={twMerge(
+    "font-content font-bold text-2xl md:text-3xl lg:text-4xl flex-1 text-white group-hover:text-black transition-colors duration-700",
+    selectedIndex === faqIndex && "text-black"
+)}>{question}</div>
                                 <div
                                     className={twMerge(
                                         "inline-flex items-center justify-center size-11 shrink-0 transition duration-300 text-white group-hover:text-black",
-                                        faqIndex === selectedIndex && "rotate-45"
+                                        faqIndex === selectedIndex && "rotate-45 text-black"
                                     )}
                                 >
                                     <svg
@@ -104,7 +106,7 @@ export default function FAQSection() {
                                         exit={{ height: 0 }}
                                         transition={{ duration: 0.7, ease: "easeOut" }}
                                     >
-                                        <p className="font-content text-xl mt-4 text-white group-hover:text-black transition-colors duration-700">{answer}</p>
+                                        <p className={twMerge("font-content text-xl mt-4 text-white group-hover:text-black transition-colors duration-700", selectedIndex === faqIndex && "text-black")}>{answer}</p>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
