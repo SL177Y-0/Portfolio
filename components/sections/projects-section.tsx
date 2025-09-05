@@ -27,7 +27,7 @@ const projects: Project[] = [
     title: "Aurora Gold",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/Aurora_Gold.git",
-    media: "/Project/auroragold.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061886/auroragold_yuwwst.mp4",
     mediaType: "video",
     year: "2025",
     description: "AI-Investment tracking platform"
@@ -37,7 +37,7 @@ const projects: Project[] = [
     title: "Plot Spot Builder",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/Plot-spot-builder.git",
-    media: "/Project/plotspot.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061887/plotspot_nwuigg.mp4",
     mediaType: "video",
     year: "2025",
     description: "Interactive plot building tool"
@@ -47,7 +47,7 @@ const projects: Project[] = [
     title: "Zonify",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/Zonify.git",
-    media: "/Project/zonify.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061889/zonify_mbvt3r.mp4",
     mediaType: "video",
     year: "2024",
     description: "Zone mapping application"
@@ -57,7 +57,7 @@ const projects: Project[] = [
     title: "CalcyBuilder",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/CalcyBuilder.git",
-    media: "/Project/calcybuilder.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061882/calcybuilder_nkuatl.mp4",
     mediaType: "video",
     year: "2025",
     description: "Dynamic calculator builder"
@@ -67,7 +67,7 @@ const projects: Project[] = [
     title: "AI Recommendation",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/AI_RECOMMENDATION_APP.git",
-    media: "/Project/airecommend.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061881/airecommend_ofwub9.mp4",
     mediaType: "video",
     year: "2025",
     description: "AI-recommendation app"
@@ -77,7 +77,7 @@ const projects: Project[] = [
     title: "SocioHead",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/SocioHead.git",
-    media: "/Project/sociohead.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061885/sociohead_nd4qcn.mp4",
     mediaType: "video",
     year: "2025",
     description: "Social media analytics"
@@ -87,7 +87,7 @@ const projects: Project[] = [
     title: "Verida Integration",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/Verida-Telegram--AutoFetch.git",
-    media: "/Project/verida.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061885/verida_omcumm.mp4",
     mediaType: "video",
     year: "2025",
     description: "Verida SDK integration"
@@ -97,7 +97,7 @@ const projects: Project[] = [
     title: "KAPDA",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/KAPDA.git",
-    media: "/Project/kapda.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061877/kapda_dvi9qh.mp4",
     mediaType: "video",
     year: "2024",
     description: "E-commerce platform"
@@ -107,7 +107,7 @@ const projects: Project[] = [
     title: "Cancer Prediction ML",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/CancerPredictionML.git",
-    media: "/Project/cancerprediction.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061893/cancerprediction_gey18l.mp4",
     mediaType: "video",
     year: "2025",
     description: "Cancer prediction Model"
@@ -117,7 +117,7 @@ const projects: Project[] = [
     title: "IMDB Clone",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/MovieReviewSite-Spring.git",
-    media: "/Project/imdb.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061890/imdb_nzcxz4.mp4",
     mediaType: "video",
     year: "2024",
     description: "Movie rating platform"
@@ -127,7 +127,7 @@ const projects: Project[] = [
     title: "SpringBoot Cart",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/SpringBoot-Cart.git",
-    media: "/Project/springcart.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061891/springcart_eekldq.mp4",
     mediaType: "video",
     year: "2024",
     description: "Shopping cart system"
@@ -137,7 +137,7 @@ const projects: Project[] = [
     title: "Barsat Extension",
     category: "Web2",
     githubUrl: "https://github.com/SL177Y-0/Barsat-ChrExtension.git",
-    media: "/Project/barsat.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061903/barsat_af5eoq.mp4",
     mediaType: "video",
     year: "2024",
     description: "Chrome Fun extension"
@@ -148,7 +148,7 @@ const projects: Project[] = [
     title: "Web3 Signer",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/Web3_Signer.git",
-    media: "/Project/web3signer.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061886/web3signer_adluha.mp4",
     mediaType: "video",
     year: "2025",
     description: "Secure Web3 Signer"
@@ -158,7 +158,7 @@ const projects: Project[] = [
     title: "EtherSnake",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/EtherSnake.git",
-    media: "/Project/ethersnake.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061880/ethersnake_wcvg9u.mp4",
     mediaType: "video",
     year: "2025",
     description: "Blockchain-Snake game"
@@ -168,7 +168,7 @@ const projects: Project[] = [
     title: "CosmicChat",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/CosmicChat.git",
-    media: "/Project/cosmicchat.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061890/cosmicchat_p4o9fo.mp4",
     mediaType: "video",
     year: "2025",
     description: "Decentralized messaging platform"
@@ -178,7 +178,7 @@ const projects: Project[] = [
     title: "SPACE ID SDK",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/web3-name-discoverer-tool.git",
-    media: "/Project/spaceid.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061880/spaceid_fx7i2p.mp4",
     mediaType: "video",
     year: "2025",
     description: "Web3 DNS integration"
@@ -188,7 +188,7 @@ const projects: Project[] = [
     title: "Task Management dApp",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/ToDo-Web3.git",
-    media: "/Project/taskmanage.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061878/taskmanage_ygds1p.mp4",
     mediaType: "video",
     year: "2025",
     description: "Decentralized ToDo"
@@ -198,7 +198,7 @@ const projects: Project[] = [
     title: "DAOGovLite",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/DaoGovLite.git",
-    media: "/Project/daogov.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061879/daogov_hrnweu.mp4",
     mediaType: "video",
     year: "2025",
     description: "DAO governance platform"
@@ -208,7 +208,7 @@ const projects: Project[] = [
     title: "TimeLock Wallet",
     category: "Web3",
     githubUrl: "https://github.com/SL177Y-0/TimeLockWallet.git",
-    media: "/Project/timelock.mp4",
+    media: "https://res.cloudinary.com/dyfbk6hzo/video/upload/v1757061879/timelock_gcvuzx.mp4",
     mediaType: "video",
     year: "2025",
     description: "Time-locked wallet"
@@ -362,7 +362,7 @@ export default function ProjectsSection() {
         {/* two-column layout */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* 3D project model on the left */}
-          <div className="lg:col-span-4 lg:mt-120">
+          <div className="lg:col-span-4 lg:mt-120 hidden lg:block">
             <ProjectModelCanvas />
           </div>
 
