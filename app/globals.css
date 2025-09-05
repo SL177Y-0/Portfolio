@@ -5,74 +5,10 @@
 
 /* Custom Font Faces - All Available Fonts */
 @font-face {
-  font-family: 'Boughy';
-  src: url('/fonts/boughy/Boughy Free.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Sledge';
-  src: url('/fonts/sledge/Sledge Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Brans';
-  src: url('/fonts/brans/Brans-MediumDemo.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Brodaers';
-  src: url('/fonts/brodaers/Brodaers Expanded Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'LeonSlab';
-  src: url('/fonts/leon_slab/LeonSlab.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Runker';
   src: url('/fonts/runker/IDRunker-BoldItalic-BF689ad71c0f1c8.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Spot';
-  src: url('/fonts/spot/Desktop Fonts/TTF/Spot-Normal.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SpotItalic';
-  src: url('/fonts/spot/Desktop Fonts/TTF/Spot-Italic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Wosker';
-  src: url('/fonts/wosker/Wosker Demo.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
   font-display: swap;
 }
 
@@ -193,15 +129,7 @@
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
   
   /* Custom Font Variables - Easy switching for hero section */
-  --font-boughy: 'Boughy', sans-serif;
-  --font-sledge: 'Sledge', sans-serif;
-  --font-brans: 'Brans', sans-serif;
-  --font-brodaers: 'Brodaers', sans-serif;
-  --font-leon-slab: 'LeonSlab', serif;
   --font-runker: 'Runker', sans-serif;
-  --font-spot: 'Spot', sans-serif;
-  --font-spot-italic: 'SpotItalic', sans-serif;
-  --font-wosker: 'Wosker', sans-serif;
 }
 
 @layer base {
