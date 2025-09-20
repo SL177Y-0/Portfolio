@@ -102,10 +102,14 @@ export default function HeroSection() {
           preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-200 ease-in-out"
         >
-          <source
-            src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,q_auto/v1757067440/hero008_4_rzkq0v.mp4"
-            type="video/mp4"
-          />
+<source
+  src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,vc_auto,w_auto/v1757067440/hero008_4_rzkq0v.mp4"
+  type="video/mp4"
+/>
+<source
+  src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,vc_auto,w_auto/v1757067440/hero008_4_rzkq0v.webm"
+  type="video/webm"
+/>
         </video>
         
         {/* Subtle overlay animation to further mask any loop transitions */}
