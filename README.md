@@ -9,6 +9,10 @@
 
 Welcome to my **3D Interactive Portfolio** – where technology meets artistry. This isn't just a portfolio; it's an immersive digital journey showcasing my evolution as a full-stack developer, blockchain architect, and 3D web innovator.
 
+
+https://github.com/user-attachments/assets/03123d07-699a-4191-aeb7-562ec84a744c
+
+
 ##  **What Makes This Special**
 
 ###  **Immersive 3D Experience**
