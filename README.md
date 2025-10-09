@@ -1,4 +1,4 @@
-# 🚀 SL177Y - 3D Interactive Portfolio
+#  SL177Y - 3D Interactive Portfolio
 
 > **A cutting-edge digital experience that redefines portfolio presentation**
 
@@ -9,26 +9,26 @@
 
 Welcome to my **3D Interactive Portfolio** – where technology meets artistry. This isn't just a portfolio; it's an immersive digital journey showcasing my evolution as a full-stack developer, blockchain architect, and 3D web innovator.
 
-## ✨ **What Makes This Special**
+##  **What Makes This Special**
 
-### 🎭 **Immersive 3D Experience**
+###  **Immersive 3D Experience**
 - **4 Custom 3D Models** with floating animations and dynamic interactions
 - **Real-time rendering** optimized for 60fps performance
 - **Intersection-based lazy loading** for seamless UX
 
-### 🎨 **Creative UI/UX Design**
+###  **Creative UI/UX Design**
 - **Pokémon Card-Inspired Skills Grid** featuring 49 technologies
 - **Glassmorphic Navigation** with smooth transitions
 - **Dynamic Marquee Separators** between sections
 - **Mobile-First Responsive Design** that adapts beautifully
 
-### ⚡ **Performance Engineering**
+###  **Performance Engineering**
 - **Lazy-loaded components** reducing initial bundle by 70%
 - **Optimized image delivery** with WebP/AVIF support
 - **Bundle analysis** and tree-shaking configured
 - **Sub-2-second load times** for optimal UX
 
-## 🛠️ **Technology Arsenal**
+##  **Technology Arsenal**
 
 ### **Core Stack**
 ```typescript
@@ -44,24 +44,24 @@ const techStack = {
 ```
 
 ### **Advanced Features**
-- **🎮 Interactive 3D Models** - Custom GLB assets with physics-based animations
-- **🎯 Intersection Observer** - Smart loading and visibility detection
-- **📱 Progressive Enhancement** - Works beautifully on all devices
-- **🔍 SEO Optimized** - Perfect Lighthouse scores
-- **🎪 Smooth Scrolling** - Lenis-powered fluid navigation
+- ** Interactive 3D Models** - Custom GLB assets with physics-based animations
+- ** Intersection Observer** - Smart loading and visibility detection
+- ** Progressive Enhancement** - Works beautifully on all devices
+- ** SEO Optimized** - Perfect Lighthouse scores
+- ** Smooth Scrolling** - Lenis-powered fluid navigation
 
-## 📱 **Portfolio Sections**
+##  **Portfolio Sections**
 
 | Section | Description | Tech Highlights |
 |---------|-------------|-----------------|
-| **🎬 Hero** | Cinematic intro with 3D character model | Video optimization, GSAP animations |
-| **💼 Experience** | Interactive timeline with company logos | Dynamic content, hover effects |
-| **🚀 Projects** | Showcase with live demos and 3D previews | Lazy loading, responsive cards |
-| **🎯 Skills** | 7×7 Pokémon-style card grid (49 skills) | Intersection observer, image optimization |
-| **❓ FAQ** | Collapsible Q&A section | Accordion animations |
-| **📧 Contact** | Interactive form with 3D elements | Form validation, success states |
+| ** Hero** | Cinematic intro with 3D character model | Video optimization, GSAP animations |
+| ** Experience** | Interactive timeline with company logos | Dynamic content, hover effects |
+| ** Projects** | Showcase with live demos and 3D previews | Lazy loading, responsive cards |
+| ** Skills** | 7×7 Pokémon-style card grid (49 skills) | Intersection observer, image optimization |
+| ** FAQ** | Collapsible Q&A section | Accordion animations |
+| ** Contact** | Interactive form with 3D elements | Form validation, success states |
 
-## 🎯 **Skills Showcase**
+##  **Skills Showcase**
 
 ### **49 Technologies Mastered**
 ```typescript
@@ -77,7 +77,7 @@ const skills = {
 }
 ```
 
-## 🚀 **Quick Start**
+##  **Quick Start**
 
 ### **Prerequisites**
 - Node.js 18+ 
@@ -108,7 +108,7 @@ npm run analyze      # Bundle size analysis
 npm run dev:turbo    # Turbo-powered development
 ```
 
-## 📂 **Project Architecture**
+## **Project Architecture**
 
 ```
 📁 Portfolio/
@@ -143,7 +143,7 @@ npm run dev:turbo    # Turbo-powered development
 └── 📄 next.config.mjs         # Next.js configuration
 ```
 
-## 🎨 **Design Philosophy**
+##  **Design Philosophy**
 
 ### **Visual Hierarchy**
 - **Glassmorphism** for modern, depth-aware interfaces
@@ -163,15 +163,15 @@ npm run dev:turbo    # Turbo-powered development
 - **Screen reader** compatibility
 - **Reduced motion** preferences respected
 
-## 📊 **Performance Metrics**
+##  **Performance Metrics**
 
-- **🚀 First Contentful Paint**: < 2s
-- **⚡ Time to Interactive**: < 2.5s
-- **📊 Cumulative Layout Shift**: 0.000
-- **🎯 Lighthouse Score**: 95+ across all categories
-- **📦 Bundle Size**: Optimized with 70% reduction
+- **First Contentful Paint**: < 2s
+- **Time to Interactive**: < 2.5s
+- **Cumulative Layout Shift**: 0.000
+- **Lighthouse Score**: 95+ across all categories
+- **Bundle Size**: Optimized with 70% reduction
 
-## 🔮 **Future Enhancements**
+##  **Future Enhancements**
 
 - [ ] **Dark/Light Mode Toggle**
 - [ ] **Blog Section** with MDX support
@@ -180,20 +180,20 @@ npm run dev:turbo    # Turbo-powered development
 - [ ] **Voice Navigation** with Web Speech API
 - [ ] **PWA Support** with offline functionality
 
-## 🤝 **Contributing**
+##  **Contributing**
 
 While this is a personal portfolio, I welcome:
-- **🐛 Bug reports** and performance improvements
-- **💡 Feature suggestions** and UX enhancements  
-- **🎨 Design feedback** and accessibility improvements
+- ** Bug reports** and performance improvements
+- ** Feature suggestions** and UX enhancements  
+- ** Design feedback** and accessibility improvements
 
-## 📜 **License**
+##  **License**
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## 📬 **Let's Connect**
+##  **Let's Connect**
 
-**🚀 Ready to build something amazing together?**
+** Ready to build something amazing together?**
 
 [![Email](https://img.shields.io/badge/Email-sl177y.log0@gmail.com-D14836?style=for-the-badge&logo=gmail)](mailto:sl177y.log0@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-SL177Y--0-181717?style=for-the-badge&logo=github)](https://github.com/SL177Y-0)
