@@ -94,20 +94,16 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
-          poster="https://res.cloudinary.com/dyfbk6hzo/image/upload/v1757068060/Screenshot_2025-09-05_155700_adkrbq.png"
+          poster="https://res.cloudinary.com/dpcnxrurx/image/upload/v1762441523/image_2025-11-06_203520611_uacxls.png"
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
-          className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-200 ease-in-out"
+          className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-100 ease-in-out"
         >
 <source
-  src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,vc_auto,w_auto/v1757067440/hero008_4_rzkq0v.mp4"
-  type="video/mp4"
-/>
-<source
-  src="https://res.cloudinary.com/dyfbk6hzo/video/upload/f_auto,vc_auto,w_auto/v1757067440/hero008_4_rzkq0v.webm"
+  src="https://res.cloudinary.com/dpcnxrurx/video/upload/v1762441328/videoplayback_online-video-cutter.com_ntclpt.webm"
   type="video/webm"
 />
         </video>
