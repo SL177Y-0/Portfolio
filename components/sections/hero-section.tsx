@@ -157,7 +157,7 @@ export default function HeroSection() {
             
             <div className="flex justify-center lg:justify-start items-center gap-2 pt-2">
               <a href="#projects" onClick={handleProjectViewClick} className="btn bg-black scale-75 sm:scale-90 lg:scale-100">
-                <span className="btn__content bg-[#FFDE21] text-black font-bold text-xs sm:text-sm lg:text-base" style={{ fontFamily: 'var(--font-syne)' }}>
+                <span className="btn__content bg-[#ff0677] text-black font-bold text-xs sm:text-sm lg:text-base" style={{ fontFamily: 'var(--font-syne)' }}>
                   VIEW MY PROJECTS
                 </span>
               </a>
